@@ -1,0 +1,195 @@
+@import "tailwindcss";
+
+/* ============================================
+   RENOA Brand Colors - Edit these to change theme
+   ============================================ */
+:root {
+  --renoa-primary: #011140;
+  --renoa-white: #FFFFFF;
+  
+  /* Light Theme (Default) */
+  --background: #FFFFFF;
+  --foreground: #011140;
+  --card: #FFFFFF;
+  --card-foreground: #011140;
+  --popover: #FFFFFF;
+  --popover-foreground: #011140;
+  --primary: #011140;
+  --primary-foreground: #FFFFFF;
+  --secondary: #F1F5F9;
+  --secondary-foreground: #011140;
+  --muted: #F1F5F9;
+  --muted-foreground: #64748B;
+  --accent: #011140;
+  --accent-foreground: #FFFFFF;
+  --destructive: #E53E3E;
+  --destructive-foreground: #FFFFFF;
+  --border: #E2E8F0;
+  --input: #F1F5F9;
+  --ring: #011140;
+  --surface-light: #F8FAFC;
+  --surface-muted: #F1F5F9;
+  
+  /* Charts */
+  --chart-1: #EA580C;
+  --chart-2: #0891B2;
+  --chart-3: #334155;
+  --chart-4: #CA8A04;
+  --chart-5: #D97706;
+  
+  /* Radius */
+  --radius: 0.625rem;
+  
+  /* Sidebar */
+  --sidebar: #FAFAFA;
+  --sidebar-foreground: #011140;
+  --sidebar-primary: #011140;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #F1F5F9;
+  --sidebar-accent-foreground: #011140;
+  --sidebar-border: #E2E8F0;
+  --sidebar-ring: #011140;
+  
+  /* Shadows */
+  --shadow-1: 0 1px 3px 0 rgba(1, 17, 64, 0.1), 0 1px 2px -1px rgba(1, 17, 64, 0.1);
+  --shadow-2: 0 4px 6px -1px rgba(1, 17, 64, 0.1), 0 2px 4px -2px rgba(1, 17, 64, 0.1);
+  --shadow-3: 0 10px 15px -3px rgba(1, 17, 64, 0.1), 0 4px 6px -4px rgba(1, 17, 64, 0.1);
+  --shadow-4: 0 20px 25px -5px rgba(1, 17, 64, 0.1), 0 8px 10px -6px rgba(1, 17, 64, 0.1);
+}
+
+/* Dark Theme */
+.dark {
+  --background: #011140;
+  --foreground: #FFFFFF;
+  --card: #021B4D;
+  --card-foreground: #FFFFFF;
+  --popover: #021B4D;
+  --popover-foreground: #FFFFFF;
+  --primary: #FFFFFF;
+  --primary-foreground: #011140;
+  --secondary: #0A2A5E;
+  --secondary-foreground: #FFFFFF;
+  --muted: #0A2A5E;
+  --muted-foreground: #94A3B8;
+  --accent: #FFFFFF;
+  --accent-foreground: #011140;
+  --destructive: #E53E3E;
+  --destructive-foreground: #FFFFFF;
+  --border: #1E3A5F;
+  --input: #0A2A5E;
+  --ring: #FFFFFF;
+  --surface-light: #021B4D;
+  --surface-muted: #0A2A5E;
+  --sidebar: #021B4D;
+  --sidebar-foreground: #FFFFFF;
+  --sidebar-primary: #FFFFFF;
+  --sidebar-primary-foreground: #011140;
+  --sidebar-accent: #0A2A5E;
+  --sidebar-accent-foreground: #FFFFFF;
+  --sidebar-border: #1E3A5F;
+  --sidebar-ring: #FFFFFF;
+}
+
+/* Tailwind v4 Theme Configuration */
+@theme {
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+  
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-surface-light: var(--surface-light);
+  --color-surface-muted: var(--surface-muted);
+  
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  
+  h1 {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    line-height: 1.2;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  
+  h2 {
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    line-height: 1.2;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  
+  h3 {
+    font-size: clamp(1.5rem, 3vw, 1.75rem);
+    line-height: 1.2;
+    font-weight: 600;
+  }
+  
+  h4 {
+    font-size: 1.25rem;
+    line-height: 1.3;
+    font-weight: 600;
+  }
+}
+
+/* Custom shadow utilities */
+.shadow-card {
+  box-shadow: var(--shadow-1);
+}
+
+.shadow-card-hover {
+  box-shadow: var(--shadow-2);
+}
+
+.shadow-modal {
+  box-shadow: var(--shadow-3);
+}
+
+.shadow-overlay {
+  box-shadow: var(--shadow-4);
+}
+
+html {
+  scroll-behavior: smooth;
+}
