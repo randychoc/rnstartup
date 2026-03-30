@@ -1,97 +1,114 @@
-import { Store, Briefcase, Building2, Layers } from "lucide-react"
+import { Utensils, Stethoscope, ShoppingBag, Briefcase } from "lucide-react"
 
 const useCases = [
   {
-    icon: Store,
-    title: "Negocios locales",
-    problem: "Presencia digital básica o inexistente",
-    solution: "Sitio web profesional con SEO local",
-    result: "Mayor visibilidad y captación de clientes",
-  },
-  {
     icon: Briefcase,
-    title: "Profesionales",
-    problem: "Portafolio desactualizado o sin impacto",
-    solution: "Sitio web que destaque tu expertise",
-    result: "Posicionamiento como referente en tu área",
+    title: "Profesionales y servicios",
+    problem: "Sin presencia digital pierden credibilidad frente a la competencia",
+    solution: "Sitio que muestra su trabajo, experiencia y contacto",
+    result: "Posicionamiento como referente en su área",
   },
   {
-    icon: Building2,
-    title: "Empresas en crecimiento",
-    problem: "Sitio web que no escala con el negocio",
-    solution: "Arquitectura preparada para crecer",
-    result: "Plataforma digital lista para expansión",
+    icon: Utensils,
+    title: "Restaurantes",
+    problem: "Los clientes buscan tu menú en Google y no apareces",
+    solution: "Sitio con menú digital, horarios y Google Maps",
+    result: "Más reservas y clientes que llegan sabiendo qué esperar",
   },
   {
-    icon: Layers,
-    title: "Proyectos escalables",
-    problem: "Necesidad de funcionalidades avanzadas",
-    solution: "Desarrollo modular e integraciones",
-    result: "Sistema web que evoluciona contigo",
+    icon: Stethoscope,
+    title: "Clínicas y consultorios",
+    problem: "Pacientes nuevos no encuentran información confiable",
+    solution: "Sitio profesional con servicios, doctores y citas en línea",
+    result: "Mayor confianza y más citas agendadas desde internet",
+  },
+  {
+    icon: ShoppingBag,
+    title: "Tiendas y comercios",
+    problem: "Solo venden a quien pasa frente al local",
+    solution: "Catálogo digital con WhatsApp integrado",
+    result: "Ventas las 24 horas sin depender del tráfico físico",
   },
 ]
 
 export function UseCases() {
   return (
-    <section className="py-24 md:py-32 bg-secondary/30">
+    <section
+      className="py-24 md:py-32"
+      style={{ background: "#F8F7FF" }}
+    >
       <div className="mx-auto max-w-[1200px] px-4 md:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <span className="inline-block px-3 py-1 text-xs font-medium text-primary bg-primary/10 rounded-xs mb-4">
-            CASOS DE USO
-          </span>
-          <h2 className="text-foreground mb-4 text-balance">
+
+        {/* Header */}
+        <div className="text-center mb-14">
+          <span
+            className="inline-block px-3 py-1 text-xs font-bold tracking-widest uppercase rounded-full mb-4"
+            style={{ background: "rgba(112,48,239,0.1)", color: "#7030EF" }}
+          >
             Para quién es RENOA
+          </span>
+          <h2 style={{ color: "#090820" }}>
+            Soluciones para negocios reales
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Soluciones adaptadas a diferentes necesidades empresariales
+          <p className="mt-4 text-base max-w-lg mx-auto" style={{ color: "#5A5780" }}>
+            Trabajamos con negocios locales que quieren crecer en internet sin complicaciones.
           </p>
         </div>
 
         {/* Grid */}
         <div className="grid md:grid-cols-2 gap-6">
-          {useCases.map((useCase, index) => (
+          {useCases.map((item) => (
             <div
-              key={index}
-              className="bg-card border border-border rounded-xl p-8 shadow-card hover:shadow-card-hover transition-all duration-300"
+              key={item.title}
+              className="rounded-2xl p-7 flex items-start gap-5"
+              style={{
+                background: "#FFFFFF",
+                border: "1px solid rgba(112,48,239,0.12)",
+              }}
             >
-              <div className="flex items-start gap-4">
-                {/* Icon */}
-                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
-                  <useCase.icon className="w-6 h-6 text-primary" />
-                </div>
-
-                {/* Content */}
-                <div className="flex-1">
-                  <h4 className="text-foreground mb-4">{useCase.title}</h4>
-
-                  <div className="flex flex-col gap-3">
-                    <div className="flex items-start gap-3">
-                      <span className="text-xs font-medium text-muted-foreground bg-secondary px-2 py-1 rounded-xs shrink-0">
-                        Problema
-                      </span>
-                      <span className="text-sm text-muted-foreground">
-                        {useCase.problem}
-                      </span>
-                    </div>
-
-                    <div className="flex items-start gap-3">
-                      <span className="text-xs font-medium text-primary bg-primary/10 px-2 py-1 rounded-xs shrink-0">
-                        Solución
-                      </span>
-                      <span className="text-sm text-foreground">
-                        {useCase.solution}
-                      </span>
-                    </div>
-
-                    <div className="flex items-start gap-3">
-                      <span className="text-xs font-medium text-foreground bg-secondary px-2 py-1 rounded-xs shrink-0">
-                        Resultado
-                      </span>
-                      <span className="text-sm text-foreground font-medium">
-                        {useCase.result}
-                      </span>
-                    </div>
+              <div
+                className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
+                style={{ background: "rgba(112,48,239,0.1)" }}
+              >
+                <item.icon className="w-6 h-6" style={{ color: "#7030EF" }} />
+              </div>
+              <div className="flex-1">
+                <h4 className="mb-4" style={{ color: "#090820", fontSize: "1rem" }}>
+                  {item.title}
+                </h4>
+                <div className="flex flex-col gap-3">
+                  <div className="flex items-start gap-3">
+                    <span
+                      className="text-xs font-semibold px-2 py-1 rounded flex-shrink-0"
+                      style={{ background: "#F4F2FF", color: "#5A5780" }}
+                    >
+                      Problema
+                    </span>
+                    <span className="text-sm" style={{ color: "#5A5780" }}>
+                      {item.problem}
+                    </span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <span
+                      className="text-xs font-semibold px-2 py-1 rounded flex-shrink-0"
+                      style={{ background: "rgba(112,48,239,0.1)", color: "#7030EF" }}
+                    >
+                      Solución
+                    </span>
+                    <span className="text-sm" style={{ color: "#090820" }}>
+                      {item.solution}
+                    </span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <span
+                      className="text-xs font-semibold px-2 py-1 rounded flex-shrink-0"
+                      style={{ background: "#F4F2FF", color: "#090820" }}
+                    >
+                      Resultado
+                    </span>
+                    <span className="text-sm font-medium" style={{ color: "#090820" }}>
+                      {item.result}
+                    </span>
                   </div>
                 </div>
               </div>

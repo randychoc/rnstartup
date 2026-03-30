@@ -4,60 +4,64 @@ import { useState, useEffect } from "react"
 import { Menu, X, MessageCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
-// RENOA Contact Info - Edit these values as needed
 const RENOA_PHONE = "+502 4294-5544"
-const RENOA_PHONE_CLEAN = "50242945544" // Without spaces/dashes for WhatsApp link
-const WHATSAPP_DEFAULT_MESSAGE = "Hola, me interesa conocer más sobre los servicios de desarrollo web de RENOA."
+const RENOA_PHONE_CLEAN = "50242945544"
+const WHATSAPP_DEFAULT_MESSAGE = "Hola, me interesa agendar un diagnóstico gratuito con RENOA."
 
 const navLinks = [
+  { href: "#servicios", label: "Servicios" },
   { href: "#planes", label: "Planes" },
   { href: "#care", label: "CARE" },
   { href: "#proceso", label: "Proceso" },
-  { href: "#contacto", label: "Contacto" },
 ]
 
-// WhatsApp URL with predefined message
-const getWhatsAppUrl = (message?: string) => {
-  const encodedMessage = encodeURIComponent(message || WHATSAPP_DEFAULT_MESSAGE)
-  return `https://wa.me/${RENOA_PHONE_CLEAN}?text=${encodedMessage}`
-}
+const getWhatsAppUrl = () =>
+  `https://wa.me/${RENOA_PHONE_CLEAN}?text=${encodeURIComponent(WHATSAPP_DEFAULT_MESSAGE)}`
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10)
-    }
+    const handleScroll = () => setIsScrolled(window.scrollY > 10)
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  const navStyle: React.CSSProperties = {
+    background: isScrolled
+      ? "rgba(9,8,32,0.95)"
+      : "#090820",
+    borderBottom: `1px solid rgba(112,48,239,0.2)`,
+    backdropFilter: isScrolled ? "blur(12px)" : "none",
+    transition: "all 0.3s",
+  }
+
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-background/95 backdrop-blur-sm border-b border-border"
-          : "bg-transparent"
-      }`}
-    >
+    <header className="fixed top-0 left-0 right-0 z-50" style={navStyle}>
       <div className="mx-auto max-w-[1200px] px-4 md:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
+
           {/* Logo */}
           <a href="#" className="flex items-center">
-            <span className="text-xl font-bold tracking-tight text-foreground">
-              RENOA
+            <span
+              className="text-xl font-extrabold tracking-widest"
+              style={{ color: "#FFFFFF" }}
+            >
+              REN<span style={{ color: "#9B6BF5" }}>O</span>A
             </span>
           </a>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                className="text-sm font-medium transition-colors"
+                style={{ color: "rgba(255,255,255,0.6)" }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "#fff")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.6)")}
               >
                 {link.label}
               </a>
@@ -68,44 +72,42 @@ export function Header() {
           <div className="hidden md:flex items-center gap-4">
             <Button
               asChild
-              className="h-11 px-5 rounded-md bg-primary text-primary-foreground hover:brightness-105 transition-all"
+              className="h-10 px-5 rounded-lg font-semibold transition-all"
+              style={{ background: "#7030EF", color: "#fff", border: "none" }}
             >
-              <a
-                href={getWhatsAppUrl()}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href={getWhatsAppUrl()} target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="w-4 h-4 mr-2" />
-                <span className="hidden lg:inline">{RENOA_PHONE}</span>
+                <span className="hidden lg:inline">Diagnóstico gratuito</span>
                 <span className="lg:hidden">WhatsApp</span>
               </a>
             </Button>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile toggle */}
           <button
             type="button"
-            className="md:hidden p-2 text-foreground"
+            className="md:hidden p-2"
+            style={{ color: "#fff" }}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
-            {isMobileMenuOpen ? (
-              <X className="w-6 h-6" />
-            ) : (
-              <Menu className="w-6 h-6" />
-            )}
+            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-border">
+          <div
+            className="md:hidden py-4"
+            style={{ borderTop: "1px solid rgba(112,48,239,0.2)" }}
+          >
             <nav className="flex flex-col gap-4">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
-                  className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                  className="text-sm font-medium"
+                  style={{ color: "rgba(255,255,255,0.65)" }}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {link.label}
@@ -113,15 +115,12 @@ export function Header() {
               ))}
               <Button
                 asChild
-                className="h-11 w-full rounded-md bg-primary text-primary-foreground hover:brightness-105 transition-all mt-2"
+                className="h-11 w-full rounded-lg font-semibold mt-2"
+                style={{ background: "#7030EF", color: "#fff", border: "none" }}
               >
-                <a
-                  href={getWhatsAppUrl()}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a href={getWhatsAppUrl()} target="_blank" rel="noopener noreferrer">
                   <MessageCircle className="w-4 h-4 mr-2" />
-                  {RENOA_PHONE}
+                  Diagnóstico gratuito
                 </a>
               </Button>
             </nav>

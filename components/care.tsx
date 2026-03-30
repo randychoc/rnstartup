@@ -1,81 +1,171 @@
-import { Headphones, Wrench, RefreshCw, Shield, TrendingUp } from "lucide-react"
+import { MessageCircle } from "lucide-react"
+import { Button } from "@/components/ui/button"
 
-const careFeatures = [
+const RENOA_PHONE_CLEAN = "50242945544"
+
+const getWhatsAppUrl = (plan: string) => {
+  const message = `Hola, me interesa el plan ${plan} de RENOA CARE.`
+  return `https://wa.me/${RENOA_PHONE_CLEAN}?text=${encodeURIComponent(message)}`
+}
+
+const carePlans = [
   {
-    icon: Headphones,
-    title: "Soporte técnico",
-    description: "Asistencia dedicada para resolver cualquier incidencia de tu sitio web.",
+    name: "CARE Básico",
+    price: "Q350",
+    period: "/mes",
+    target: "Para negocios con contenido estable",
+    highlighted: false,
+    features: [
+      "Hosting y dominio gestionados por RENOA",
+      "Renovación de dominio incluida",
+      "Hasta 2 cambios de contenido al mes",
+      "Reporte mensual de visitas",
+      "Respuesta en 48 horas hábiles",
+    ],
+    examples: "Actualizar horarios · cambiar teléfono · reemplazar foto · añadir promoción",
   },
   {
-    icon: Wrench,
-    title: "Mantenimiento",
-    description: "Actualizaciones regulares y optimización continua del rendimiento.",
+    name: "CARE Plus",
+    price: "Q650",
+    period: "/mes",
+    target: "Para negocios con movimiento frecuente",
+    highlighted: true,
+    features: [
+      "Todo lo de CARE Básico",
+      "Hasta 5 cambios de contenido al mes",
+      "Actualización de galería de fotos",
+      "Revisión de SEO cada 3 meses",
+      "Respuesta en 24 horas hábiles",
+    ],
+    examples: "Subir menú nuevo · actualizar precios · añadir testimonios · cambiar portada",
   },
   {
-    icon: RefreshCw,
-    title: "Actualizaciones",
-    description: "Mejoras de contenido y funcionalidades según tus necesidades.",
-  },
-  {
-    icon: Shield,
-    title: "Seguridad",
-    description: "Monitoreo de vulnerabilidades y copias de seguridad periódicas.",
-  },
-  {
-    icon: TrendingUp,
-    title: "Mejoras",
-    description: "Evolución constante de tu sitio web con nuevas funcionalidades.",
+    name: "CARE Premium",
+    price: "Q1,200",
+    period: "/mes",
+    target: "Socio digital mensual",
+    highlighted: false,
+    features: [
+      "Todo lo de CARE Plus",
+      "Cambios de contenido ilimitados",
+      "Soporte directo por WhatsApp",
+      "Respuesta en 4 horas hábiles",
+      "1 mejora de diseño por trimestre",
+    ],
+    examples: "Añadir nueva sección · nueva página · integrar red social · evento especial",
   },
 ]
 
 export function Care() {
   return (
-    <section id="care" className="py-24 md:py-32 bg-secondary/30">
+    <section
+      id="care"
+      className="py-24 md:py-32"
+      style={{ background: "#090820" }}
+    >
       <div className="mx-auto max-w-[1200px] px-4 md:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <span className="inline-block px-3 py-1 text-xs font-medium text-primary bg-primary/10 rounded-xs mb-4">
+
+        {/* Header */}
+        <div className="text-center mb-14">
+          <span
+            className="inline-block px-3 py-1 text-xs font-bold tracking-widest uppercase rounded-full mb-4"
+            style={{
+              background: "rgba(112,48,239,0.18)",
+              border: "1px solid rgba(112,48,239,0.3)",
+              color: "#9B6BF5",
+            }}
+          >
             RENOA CARE
           </span>
-          <h2 className="text-foreground mb-4 text-balance">
-            Soporte continuo para tu proyecto
+          <h2 style={{ color: "#FFFFFF" }}>
+            Tu sitio, siempre{" "}
+            <span style={{ color: "#9B6BF5" }}>activo y actualizado</span>
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Mantenemos tu sitio web actualizado, seguro y funcionando al máximo rendimiento
+          <p
+            className="mt-4 text-base max-w-lg mx-auto"
+            style={{ color: "rgba(255,255,255,0.5)" }}
+          >
+            Planes mensuales para que no tengas que preocuparte por nada.
+            Tú enfócate en tu negocio, RENOA se encarga de tu sitio.
           </p>
         </div>
 
-        {/* Features Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
-          {careFeatures.map((feature, index) => (
+        {/* Plans */}
+        <div className="grid md:grid-cols-3 gap-6">
+          {carePlans.map((plan) => (
             <div
-              key={index}
-              className="bg-card border border-border rounded-xl p-6 shadow-card hover:shadow-card-hover transition-all duration-300 text-center"
+              key={plan.name}
+              className="rounded-2xl p-6 flex flex-col"
+              style={{
+                background: "#11102E",
+                border: plan.highlighted
+                  ? "1.5px solid rgba(112,48,239,0.6)"
+                  : "1px solid rgba(112,48,239,0.2)",
+              }}
             >
-              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                <feature.icon className="w-6 h-6 text-primary" />
+              <div className="mb-4">
+                <h4 style={{ color: "#FFFFFF", fontSize: "1rem", fontWeight: 700 }}>
+                  {plan.name}
+                </h4>
+                <p className="text-xs mt-1" style={{ color: "rgba(255,255,255,0.45)" }}>
+                  {plan.target}
+                </p>
               </div>
-              <h4 className="text-foreground mb-2">{feature.title}</h4>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                {feature.description}
-              </p>
+
+              <div className="mb-5">
+                <span className="text-3xl font-extrabold" style={{ color: "#FFFFFF" }}>
+                  {plan.price}
+                </span>
+                <span className="text-sm" style={{ color: "rgba(255,255,255,0.4)" }}>
+                  {plan.period}
+                </span>
+              </div>
+
+              <ul className="flex flex-col gap-3 flex-1 mb-4">
+                {plan.features.map((feat) => (
+                  <li key={feat} className="flex items-start gap-2.5">
+                    <span
+                      className="mt-0.5 font-bold flex-shrink-0"
+                      style={{ color: "#9B6BF5" }}
+                    >
+                      +
+                    </span>
+                    <span className="text-sm" style={{ color: "rgba(255,255,255,0.55)" }}>
+                      {feat}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+
+              {/* Examples */}
+              {/* <div
+                className="rounded-xl p-3 mb-5"
+                style={{ background: "rgba(112,48,239,0.08)" }}
+              >
+                <p className="text-xs font-semibold mb-1" style={{ color: "rgba(255,255,255,0.35)", textTransform: "uppercase", letterSpacing: "0.06em" }}>
+                  Ejemplos de cambios
+                </p>
+                <p className="text-xs" style={{ color: "rgba(255,255,255,0.45)", lineHeight: 1.6 }}>
+                  {plan.examples}
+                </p>
+              </div> */}
+
+              <Button
+                asChild
+                className="w-full h-10 rounded-xl font-semibold text-sm transition-all"
+                style={
+                  plan.highlighted
+                    ? { background: "#7030EF", color: "#fff", border: "none" }
+                    : { background: "rgba(112,48,239,0.18)", color: "#9B6BF5", border: "1px solid rgba(112,48,239,0.3)" }
+                }
+              >
+                <a href={getWhatsAppUrl(plan.name)} target="_blank" rel="noopener noreferrer">
+                  <MessageCircle className="w-4 h-4 mr-2" />
+                  Solicitar {plan.name}
+                </a>
+              </Button>
             </div>
           ))}
-        </div>
-
-        {/* Pricing Note */}
-        <div className="mt-12 text-center">
-          <div className="inline-flex items-center gap-4 bg-card border border-border rounded-lg px-6 py-4 shadow-card">
-            <div>
-              <span className="text-sm text-muted-foreground">Desde </span>
-              <span className="text-2xl font-bold text-foreground">Q200</span>
-              <span className="text-muted-foreground">/mensual</span>
-            </div>
-            <div className="w-px h-8 bg-border" />
-            <p className="text-sm text-muted-foreground">
-              Plan mensual de mantenimiento y soporte
-            </p>
-          </div>
         </div>
       </div>
     </section>

@@ -1,84 +1,88 @@
-import { Code2, Boxes, Headphones, Check } from "lucide-react"
+import { Search, Users, Clock, Share2 } from "lucide-react"
 
-const services = [
+const problems = [
   {
-    icon: Code2,
-    title: "Desarrollo web profesional",
-    description: "Sitios web construidos con las mejores prácticas de la industria.",
-    bullets: [
-      "Código limpio y mantenible",
-      "Diseño responsive",
-      "SEO optimizado",
-    ],
+    icon: Search,
+    title: "No te encuentran en Google",
+    description:
+      "El 80% de las personas busca en Google antes de visitar un negocio. Si no apareces, la competencia se queda con ese cliente.",
   },
   {
-    icon: Boxes,
-    title: "Arquitectura preparada para crecer",
-    description: "Estructura modular lista para expandirse según tus necesidades.",
-    bullets: [
-      "Componentes reutilizables",
-      "Integración de APIs",
-      "Escalabilidad planificada",
-    ],
+    icon: Users,
+    title: "Pierdes credibilidad",
+    description:
+      "Sin sitio web, los clientes dudan si tu negocio es serio o confiable. La primera impresión ahora ocurre en línea.",
   },
   {
-    icon: Headphones,
-    title: "Soporte estructurado",
-    description: "Acompañamiento técnico continuo para tu proyecto.",
-    bullets: [
-      "Mantenimiento preventivo",
-      "Actualizaciones de seguridad",
-      "Soporte técnico dedicado",
-    ],
+    icon: Clock,
+    title: "Tu negocio cierra a las 6pm",
+    description:
+      "Un sitio web trabaja por ti las 24 horas, los 365 días del año. Tus clientes no esperan a que abras.",
+  },
+  {
+    icon: Share2,
+    title: "Solo dependes del boca a boca",
+    description:
+      "Las referencias son valiosas, pero un sitio web multiplica tu alcance sin que tengas que estar presente.",
   },
 ]
 
 export function Services() {
   return (
-    <section className="py-24 md:py-32">
+    <section
+      id="servicios"
+      className="py-24 md:py-24"
+      style={{ background: "#090820" }}
+    >
       <div className="mx-auto max-w-[1200px] px-4 md:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <span className="inline-block px-3 py-1 text-xs font-medium text-primary bg-primary/10 rounded-xs mb-4">
-            SERVICIOS
+
+        {/* Header */}
+        <div className="text-center mb-14">
+          <span
+            className="inline-block px-3 py-1 text-xs font-bold tracking-widest uppercase rounded-full mb-4"
+            style={{
+              background: "rgba(112,48,239,0.18)",
+              border: "1px solid rgba(112,48,239,0.3)",
+              color: "#9B6BF5",
+            }}
+          >
+            El problema
           </span>
-          <h2 className="text-foreground mb-4 text-balance">
-            Qué hace RENOA
+          <h2 style={{ color: "#FFFFFF" }}>
+            ¿Qué pasa cuando tu negocio{" "}
+            <span style={{ color: "#9B6BF5" }}>no está en línea</span>?
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Soluciones web profesionales con enfoque en crecimiento tecnológico
+          <p
+            className="mt-4 text-lg max-w-xl mx-auto"
+            style={{ color: "rgba(255,255,255,0.5)" }}
+          >
+            Cada día sin presencia digital es un día perdiendo clientes frente a la competencia.
           </p>
         </div>
 
-        {/* Services Grid */}
-        <div className="grid md:grid-cols-3 gap-6">
-          {services.map((service, index) => (
+        {/* Grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {problems.map((item, index) => (
             <div
               key={index}
-              className="group bg-card border border-border rounded-xl p-8 shadow-card hover:shadow-card-hover transition-all duration-300"
+              className="rounded-2xl p-6 transition-all duration-300"
+              style={{
+                background: "#11102E",
+                border: "1px solid rgba(112,48,239,0.2)",
+              }}
             >
-              {/* Icon */}
-              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
-                <service.icon className="w-6 h-6 text-primary" />
+              <div
+                className="w-10 h-10 rounded-xl flex items-center justify-center mb-5"
+                style={{ background: "rgba(112,48,239,0.18)" }}
+              >
+                <item.icon className="w-5 h-5" style={{ color: "#9B6BF5" }} />
               </div>
-
-              {/* Content */}
-              <h3 className="text-foreground mb-3">{service.title}</h3>
-              <p className="text-muted-foreground text-sm mb-6 leading-relaxed">
-                {service.description}
+              <h4 className="mb-2" style={{ color: "#FFFFFF", fontSize: "0.95rem" }}>
+                {item.title}
+              </h4>
+              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.45)" }}>
+                {item.description}
               </p>
-
-              {/* Bullets */}
-              <ul className="flex flex-col gap-3">
-                {service.bullets.map((bullet, bulletIndex) => (
-                  <li key={bulletIndex} className="flex items-center gap-3">
-                    <div className="w-5 h-5 rounded-xs bg-primary/10 flex items-center justify-center shrink-0">
-                      <Check className="w-3 h-3 text-primary" />
-                    </div>
-                    <span className="text-sm text-foreground">{bullet}</span>
-                  </li>
-                ))}
-              </ul>
             </div>
           ))}
         </div>
