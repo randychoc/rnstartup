@@ -36,7 +36,8 @@ export function Hero() {
       <div
         className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10"
         style={{
-          width: "600px",
+          width: "100%",
+          maxWidth: "600px",
           height: "400px",
           background: "radial-gradient(ellipse, rgba(112,48,239,0.18) 0%, transparent 70%)",
           pointerEvents: "none",

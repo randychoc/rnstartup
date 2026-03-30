@@ -41,7 +41,7 @@ export function CTA() {
           >
             <a href={getWhatsAppUrl()} target="_blank" rel="noopener noreferrer">
               <MessageCircle className="w-5 h-5 mr-2" />
-              Solicitar diagnóstico gratuito
+              Solicitar diagnóstico
             </a>
           </Button>
         </div>
