@@ -29,13 +29,32 @@ Single-page marketing site for RENOA (web development agency). All content is in
 
 (`ComparisonTable` exists in `components/` and is fully implemented but commented out in `app/page.tsx` pending content decision.)
 
-Each section is a named export in its own file under `components/`. There are no nested routes, no API routes, and no data fetching — all content is hardcoded. Client images live in `app/ClientesRenoa/` and are imported statically in `portfolio.tsx`.
+Each section is a named export in its own file under `components/`. There are no nested routes, no API routes, and no data fetching — all content is hardcoded. Original client images (PNG sources) live in `app/ClientesRenoa/`. Optimized versions for the web live in `public/portfolio/` as JPEG + WebP + AVIF triplets (see Image optimization below).
 
 **Analytics:** Google Analytics (GA4) via `components/GoogleAnalytics.tsx` (loaded conditionally on `NEXT_PUBLIC_GA_MEASUREMENT_ID` env var), wired in `app/layout.tsx`.
 
 **SEO:** `app/layout.tsx` exports full `metadata` (OpenGraph, Twitter card, canonical, robots) and a JSON-LD `<script>` (Schema.org `ProfessionalService`). `app/opengraph-image.tsx` auto-generates the `og:image` via Next.js `ImageResponse`.
 
 **404:** `app/not-found.tsx` provides a branded 404 page.
+
+## Image optimization
+
+Portfolio images follow a three-format strategy for maximum browser coverage:
+
+| Format | Tool | Quality | Typical size |
+|---|---|---|---|
+| JPEG | `sips` | 80 | 332–428 KB |
+| WebP | `cwebp -q 80` | 80 | 152–212 KB |
+| AVIF | `sips -s format avif -s formatOptions 70` | 70 | 176–236 KB |
+
+`portfolio.tsx` uses `<picture>` tags — browsers pick the first format they support:
+```html
+<source srcSet="...avif" type="image/avif" />
+<source srcSet="...webp" type="image/webp" />
+<img src="...jpg" loading="lazy" decoding="async" />
+```
+
+To add a new portfolio image: place the PNG source in `app/ClientesRenoa/`, then run `bash scripts/optimize-images.sh` (generates JPEG), then manually run `cwebp -q 80 <file>.jpg -o <file>.webp` and `sips -s format avif -s formatOptions 70 <file>.jpg --out <file>.avif` in `public/portfolio/`.
 
 ## Styling
 
@@ -50,6 +69,14 @@ Each section is a named export in its own file under `components/`. There are no
 - Utility classes `.section-dark`, `.section-dark-card`, `.shadow-card`, `.shadow-card-hover`, `.shadow-modal`, `.shadow-overlay` are defined in `globals.css`.
 - shadcn/ui components (`components/ui/`) use the `radix-nova` style with `lucide-react` icons.
 - Dark mode is supported via `next-themes` (`components/theme-provider.tsx`). Press `d` to toggle.
+
+## Performance notes
+
+- `next.config.mjs` uses `output: 'export'` (static GitHub Pages) + `images: { unoptimized: true }` — `next/image` optimization is disabled; use raw `<img>` inside `<picture>` instead.
+- `compiler.removeConsole` strips `console.log/warn` in production builds.
+- Inter font uses `display: 'swap'` to prevent invisible text during font load.
+- `app/layout.tsx` includes `preconnect` and `dns-prefetch` for Google Analytics domains.
+- `public/.nojekyll` disables Jekyll processing on GitHub Pages.
 
 ## Section visual rhythm
 
