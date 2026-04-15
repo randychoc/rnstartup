@@ -113,16 +113,19 @@ export function Portfolio() {
                   className="w-full aspect-video overflow-hidden"
                   style={{ borderBottom: "1px solid rgba(112,48,239,0.15)" }}
                 >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={project.image}
-                    alt={project.alt}
-                    width={1200}
-                    height={675}
-                    loading="lazy"
-                    decoding="async"
-                    className="w-full h-full object-cover"
-                  />
+                  <picture>
+                    <source srcSet={project.image.replace(".jpg", ".avif")} type="image/avif" />
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={project.image}
+                      alt={project.alt}
+                      width={1200}
+                      height={675}
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-full object-cover"
+                    />
+                  </picture>
                 </div>
 
                 {/* Content */}
