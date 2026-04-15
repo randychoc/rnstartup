@@ -51,7 +51,7 @@ export function Footer() {
       <div className="mx-auto max-w-[1200px] px-4 md:px-6 lg:px-8 py-14">
 
         {/* Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-10 mb-12">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-10 mb-12">
           <div>
             <p className="text-sm font-bold mb-4" style={{ color: "#FFFFFF" }}>
               {footerLinks.company.title}

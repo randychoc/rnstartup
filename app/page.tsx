@@ -7,6 +7,9 @@ import { Plans } from "@/components/plans"
 import { Care } from "@/components/care"
 import { Process } from "@/components/process"
 import { UseCases } from "@/components/use-cases"
+import { Portfolio } from "@/components/portfolio"
+import { Testimonials } from "@/components/testimonials"
+import { About } from "@/components/about"
 import { CTA } from "@/components/cta"
 import { Footer } from "@/components/footer"
 
@@ -16,11 +19,14 @@ export default function Home() {
       <Header />
       <Hero />
       <Services />
+      <Portfolio />
       <Plans />
       {/* TODO: Uncomment when plan comparison details are ready
       <ComparisonTable />
       */}
       <Care />
+      <Testimonials />
+      <About />
       <Process />
       <UseCases />
       <CTA />

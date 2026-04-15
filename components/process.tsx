@@ -27,11 +27,11 @@ const steps = [
 
 export function Process() {
   return (
-    <section id="proceso" className="py-24 md:py-32" style={{ background: "#FFFFFF" }}>
+    <section id="proceso" className="py-20 md:py-28" style={{ background: "#f8f8fc" }}>
       <div className="mx-auto max-w-[1200px] px-4 md:px-6 lg:px-8">
 
         {/* Header */}
-        <div className="text-center mb-14">
+        <div className="text-center mb-12 md:mb-16">
           <span
             className="inline-block px-3 py-1 text-xs font-bold tracking-widest uppercase rounded-full mb-4"
             style={{ background: "rgba(112,48,239,0.1)", color: "#7030EF" }}

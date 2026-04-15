@@ -60,13 +60,13 @@ export function Care() {
   return (
     <section
       id="care"
-      className="py-24 md:py-32"
+      className="py-20 md:py-28"
       style={{ background: "#090820" }}
     >
       <div className="mx-auto max-w-[1200px] px-4 md:px-6 lg:px-8">
 
         {/* Header */}
-        <div className="text-center mb-14">
+        <div className="text-center mb-12 md:mb-16">
           <span
             className="inline-block px-3 py-1 text-xs font-bold tracking-widest uppercase rounded-full mb-4"
             style={{

@@ -155,4 +155,4 @@
 .shadow-modal { box-shadow: var(--shadow-3); }
 .shadow-overlay { box-shadow: var(--shadow-4); }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }

@@ -1,4 +1,4 @@
-import { Check, MessageCircle } from "lucide-react"
+import { Check, MessageCircle, Users, TrendingDown, Calculator } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 const RENOA_PHONE_CLEAN = "50242945544"
@@ -68,11 +68,11 @@ const plans = [
 
 export function Plans() {
   return (
-    <section id="planes" className="py-24 md:py-32" style={{ background: "#F8F7FF" }}>
+    <section id="planes" className="py-20 md:py-28" style={{ background: "#F8F7FF" }}>
       <div className="mx-auto max-w-[1200px] px-4 md:px-6 lg:px-8">
 
         {/* Header */}
-        <div className="text-center mb-14">
+        <div className="text-center mb-12 md:mb-16">
           <span
             className="inline-block px-3 py-1 text-xs font-bold tracking-widest uppercase rounded-full mb-4"
             style={{
@@ -88,6 +88,91 @@ export function Plans() {
           <p className="mt-4 text-base max-w-lg mx-auto" style={{ color: "#5A5780" }}>
             Pago único. Dominio .com y hosting incluidos en todos los planes.
           </p>
+        </div>
+
+        {/* Value context */}
+        <div
+          className="mb-16 rounded-2xl p-6 sm:p-8"
+          style={{
+            background: "linear-gradient(135deg, rgba(112,48,239,0.08), rgba(155,107,245,0.05))",
+            border: "1px solid rgba(112,48,239,0.1)",
+          }}
+        >
+          <h3
+            className="text-center text-base font-semibold mb-6"
+            style={{ color: "#090820" }}
+          >
+            ¿Cuánto te cuesta <span style={{ color: "#7030EF" }}>no tener</span> sitio web?
+          </h3>
+
+          <div className="grid md:grid-cols-3 gap-4 mb-10">
+            {[
+              {
+                Icon: Users,
+                stat: "Q2,500",
+                statLabel: "que perdés cada mes sin sitio web",
+                detail: "Solo por 5 clientes a Q500 promedio que no te encuentran en Google.",
+              },
+              {
+                Icon: TrendingDown,
+                stat: "Cada día",
+                statLabel: "tu competencia capta tus clientes",
+                detail: "Ya están en internet. Cada día sin presencia digital, ellos avanzan y vos no.",
+              },
+              {
+                Icon: Calculator,
+                stat: "5 clientes",
+                statLabel: "nuevos al mes pagan tu sitio completo",
+                detail: "Recuperás tu inversión en el primer mes. Del segundo en adelante, es ganancia pura.",
+              },
+            ].map(({ Icon, stat, statLabel, detail }) => (
+              <div
+                key={stat}
+                className="rounded-xl p-5 flex flex-col gap-3"
+                style={{
+                  background: "rgba(112,48,239,0.07)",
+                  border: "1px solid rgba(112,48,239,0.15)",
+                }}
+              >
+                {/* Stat */}
+                <div className="flex items-start justify-between gap-2">
+                  <div
+                    className="inline-block px-3 py-1 rounded-lg"
+                    style={{ background: "rgba(112,48,239,0.12)" }}
+                  >
+                    <span
+                      className="text-3xl font-bold leading-none"
+                      style={{ color: "#9B6BF5" }}
+                    >
+                      {stat}
+                    </span>
+                  </div>
+                  <div
+                    className="w-7 h-7 rounded-md flex items-center justify-center flex-shrink-0 mt-1"
+                    style={{ background: "rgba(112,48,239,0.1)" }}
+                  >
+                    <Icon className="w-3.5 h-3.5" style={{ color: "#7030EF" }} />
+                  </div>
+                </div>
+
+                {/* Label + detail */}
+                <div>
+                  <p className="text-sm font-semibold mb-1" style={{ color: "#090820" }}>
+                    {statLabel}
+                  </p>
+                  <p className="text-xs leading-relaxed" style={{ color: "#5A5780" }}>
+                    {detail}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-6 mb-10">
+            <p className="text-lg font-semibold" style={{ color: "#090820" }}>
+              Inversión única. Sin mensualidades obligatorias. Sin letras pequeñas.
+            </p>
+          </div>
         </div>
 
         {/* Plans Grid */}

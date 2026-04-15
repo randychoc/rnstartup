@@ -4,7 +4,6 @@ import { useState, useEffect } from "react"
 import { Menu, X, MessageCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
-const RENOA_PHONE = "+502 4294-5544"
 const RENOA_PHONE_CLEAN = "50242945544"
 const WHATSAPP_DEFAULT_MESSAGE = "Hola, me interesa agendar un diagnóstico gratuito con RENOA."
 
@@ -21,24 +20,31 @@ const getWhatsAppUrl = () =>
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [ctaPulse, setCtaPulse] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 10)
-    window.addEventListener("scroll", handleScroll)
+    const handleScroll = () => setIsScrolled(window.scrollY > 50)
+    window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  useEffect(() => {
+    const timer = setTimeout(() => setCtaPulse(true), 5000)
+    return () => clearTimeout(timer)
+  }, [])
+
   const navStyle: React.CSSProperties = {
-    background: isScrolled
-      ? "rgba(9,8,32,0.95)"
-      : "#090820",
-    borderBottom: `1px solid rgba(112,48,239,0.2)`,
-    backdropFilter: isScrolled ? "blur(12px)" : "none",
-    transition: "all 0.3s",
+    background: isScrolled ? "rgba(9,8,32,0.92)" : "#090820",
+    borderBottom: `1px solid rgba(112,48,239,${isScrolled ? "0.2" : "0.1"})`,
+    backdropFilter: isScrolled ? "blur(14px)" : "none",
+    transition: "all 0.3s ease",
   }
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50" style={navStyle}>
+    <header
+      className={`sticky top-0 z-50 ${isScrolled ? "shadow-lg shadow-black/20" : ""}`}
+      style={navStyle}
+    >
       <div className="mx-auto max-w-[1200px] px-4 md:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
 
@@ -72,12 +78,13 @@ export function Header() {
           <div className="hidden md:flex items-center gap-4">
             <Button
               asChild
-              className="h-10 px-5 rounded-lg font-semibold transition-all"
+              className={`h-10 px-5 rounded-lg font-semibold transition-all ${ctaPulse ? "animate-pulse" : ""}`}
               style={{ background: "#7030EF", color: "#fff", border: "none" }}
+              onMouseEnter={() => setCtaPulse(false)}
             >
               <a href={getWhatsAppUrl()} target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="w-4 h-4 mr-2" />
-                <span className="hidden lg:inline">Diagnóstico gratuito</span>
+                <span className="hidden lg:inline">Diagnóstico gratis</span>
                 <span className="lg:hidden">WhatsApp</span>
               </a>
             </Button>
@@ -86,7 +93,7 @@ export function Header() {
           {/* Mobile toggle */}
           <button
             type="button"
-            className="md:hidden p-2"
+            className="md:hidden p-3"
             style={{ color: "#fff" }}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
@@ -120,7 +127,7 @@ export function Header() {
               >
                 <a href={getWhatsAppUrl()} target="_blank" rel="noopener noreferrer">
                   <MessageCircle className="w-4 h-4 mr-2" />
-                  Diagnóstico gratuito
+                  Diagnóstico gratis
                 </a>
               </Button>
             </nav>

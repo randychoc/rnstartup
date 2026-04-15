@@ -31,30 +31,29 @@ export function Services() {
   return (
     <section
       id="servicios"
-      className="py-24 md:py-24"
-      style={{ background: "#090820" }}
+      className="py-20 md:py-28"
+      style={{ background: "#f8f8fc" }}
     >
       <div className="mx-auto max-w-[1200px] px-4 md:px-6 lg:px-8">
 
         {/* Header */}
-        <div className="text-center mb-14">
+        <div className="text-center mb-12 md:mb-16">
           <span
             className="inline-block px-3 py-1 text-xs font-bold tracking-widest uppercase rounded-full mb-4"
             style={{
-              background: "rgba(112,48,239,0.18)",
-              border: "1px solid rgba(112,48,239,0.3)",
-              color: "#9B6BF5",
+              background: "rgba(112,48,239,0.1)",
+              color: "#7030EF",
             }}
           >
             El problema
           </span>
-          <h2 style={{ color: "#FFFFFF" }}>
+          <h2 style={{ color: "#1a1a2e" }}>
             ¿Qué pasa cuando tu negocio{" "}
-            <span style={{ color: "#9B6BF5" }}>no está en línea</span>?
+            <span style={{ color: "#7030EF" }}>no está en línea</span>?
           </h2>
           <p
             className="mt-4 text-lg max-w-xl mx-auto"
-            style={{ color: "rgba(255,255,255,0.5)" }}
+            style={{ color: "#4a4a6a" }}
           >
             Cada día sin presencia digital es un día perdiendo clientes frente a la competencia.
           </p>
@@ -65,22 +64,22 @@ export function Services() {
           {problems.map((item, index) => (
             <div
               key={index}
-              className="rounded-2xl p-6 transition-all duration-300"
+              className="rounded-2xl p-6 transition-all duration-300 shadow-sm"
               style={{
-                background: "#11102E",
-                border: "1px solid rgba(112,48,239,0.2)",
+                background: "#ffffff",
+                border: "1px solid #e2e2ea",
               }}
             >
               <div
                 className="w-10 h-10 rounded-xl flex items-center justify-center mb-5"
-                style={{ background: "rgba(112,48,239,0.18)" }}
+                style={{ background: "rgba(112,48,239,0.1)" }}
               >
-                <item.icon className="w-5 h-5" style={{ color: "#9B6BF5" }} />
+                <item.icon className="w-5 h-5" style={{ color: "#7030EF" }} />
               </div>
-              <h4 className="mb-2" style={{ color: "#FFFFFF", fontSize: "0.95rem" }}>
+              <h4 className="mb-2" style={{ color: "#1a1a2e", fontSize: "0.95rem" }}>
                 {item.title}
               </h4>
-              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.45)" }}>
+              <p className="text-sm leading-relaxed" style={{ color: "#4a4a6a" }}>
                 {item.description}
               </p>
             </div>
