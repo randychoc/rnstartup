@@ -115,6 +115,7 @@ export function Portfolio() {
                 >
                   <picture>
                     <source srcSet={project.image.replace(".jpg", ".avif")} type="image/avif" />
+                    <source srcSet={project.image.replace(".jpg", ".webp")} type="image/webp" />
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={project.image}
