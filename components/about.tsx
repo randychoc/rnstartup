@@ -48,7 +48,7 @@ export function About() {
           </h2>
           <p
             className="mt-4 text-base max-w-2xl mx-auto"
-            style={{ color: "rgba(255,255,255,0.5)" }}
+            style={{ color: "rgba(255,255,255,0.75)" }}
           >
             Somos un equipo de ingenieros de software con experiencia en sistemas empresariales.
             Construimos sitios web con el mismo rigor técnico que usamos en ambientes de misión crítica.
@@ -81,7 +81,7 @@ export function About() {
                 </h4>
                 <p
                   className="text-sm leading-relaxed"
-                  style={{ color: "rgba(255,255,255,0.55)" }}
+                  style={{ color: "rgba(255,255,255,0.75)" }}
                 >
                   {description}
                 </p>

@@ -94,7 +94,7 @@ export function CTA() {
               Disponibilidad en {CURRENT_MONTH}: {AVAILABLE_SLOTS} proyecto{AVAILABLE_SLOTS !== 1 ? "s" : ""}
             </p>
           </div>
-          <p className="text-xs" style={{ color: "rgba(255,255,255,0.5)" }}>
+          <p className="text-xs" style={{ color: "rgba(255,255,255,0.7)" }}>
             Trabajamos máximo 4 proyectos al mes para garantizar calidad
           </p>
         </div>

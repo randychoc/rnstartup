@@ -40,7 +40,7 @@ const footerLinks = {
 
 const linkStyle: React.CSSProperties = {
   fontSize: "0.875rem",
-  color: "rgba(255,255,255,0.45)",
+  color: "rgba(255,255,255,0.7)",
   textDecoration: "none",
   transition: "color 0.2s",
 }
@@ -111,7 +111,7 @@ export function Footer() {
           >
             REN<span style={{ color: "#9B6BF5" }}>O</span>A
           </span>
-          <p className="text-sm" style={{ color: "rgba(255,255,255,0.3)" }}>
+          <p className="text-sm" style={{ color: "rgba(255,255,255,0.6)" }}>
             © {new Date().getFullYear()} RENOA. Todos los derechos reservados. · Guatemala
           </p>
         </div>

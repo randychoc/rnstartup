@@ -65,9 +65,9 @@ export function Header() {
                 key={link.href}
                 href={link.href}
                 className="text-sm font-medium transition-colors"
-                style={{ color: "rgba(255,255,255,0.6)" }}
+                style={{ color: "rgba(255,255,255,0.75)" }}
                 onMouseEnter={(e) => (e.currentTarget.style.color = "#fff")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.6)")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.75)")}
               >
                 {link.label}
               </a>
@@ -114,7 +114,7 @@ export function Header() {
                   key={link.href}
                   href={link.href}
                   className="text-sm font-medium"
-                  style={{ color: "rgba(255,255,255,0.65)" }}
+                  style={{ color: "rgba(255,255,255,0.75)" }}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {link.label}

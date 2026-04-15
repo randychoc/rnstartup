@@ -62,7 +62,7 @@ export function UseCases() {
           >
             Soluciones para negocios reales
           </h2>
-          <p className="mt-4 text-base max-w-lg mx-auto" style={{ color: "rgba(255,255,255,0.5)" }}>
+          <p className="mt-4 text-base max-w-lg mx-auto" style={{ color: "rgba(255,255,255,0.75)" }}>
             Trabajamos con negocios locales que quieren crecer en internet sin complicaciones.
           </p>
         </div>
@@ -97,7 +97,7 @@ export function UseCases() {
               {/* Description */}
               <p
                 className="text-sm md:text-base leading-relaxed flex-1"
-                style={{ color: "rgba(255,255,255,0.6)" }}
+                style={{ color: "rgba(255,255,255,0.75)" }}
               >
                 {description}
               </p>
@@ -118,7 +118,7 @@ export function UseCases() {
         </div>
 
         {/* Bottom note */}
-        <p className="text-center mt-10 text-sm" style={{ color: "rgba(255,255,255,0.4)" }}>
+        <p className="text-center mt-10 text-sm" style={{ color: "rgba(255,255,255,0.7)" }}>
           ¿No ves tu tipo de negocio? Todos los negocios locales pueden beneficiarse de un sitio web profesional.{" "}
           <a
             href={getWhatsAppUrl()}

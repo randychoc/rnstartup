@@ -72,7 +72,7 @@ export function Hero() {
         {/* Subheadline */}
         <p
           className="text-lg max-w-xl leading-relaxed"
-          style={{ color: "rgba(255,255,255,0.55)" }}
+          style={{ color: "rgba(255,255,255,0.75)" }}
         >
           Creamos sitios web que atraen clientes, generan confianza y trabajan
           por tu negocio las 24 horas del día.
@@ -117,7 +117,7 @@ export function Hero() {
               Disponibilidad en {CURRENT_MONTH}: {AVAILABLE_SLOTS} proyecto{AVAILABLE_SLOTS !== 1 ? "s" : ""}
             </p>
           </div>
-          <p className="text-xs" style={{ color: "rgba(255,255,255,0.35)" }}>
+          <p className="text-xs" style={{ color: "rgba(255,255,255,0.7)" }}>
             Trabajamos máximo 4 proyectos al mes para garantizar calidad
           </p>
         </div>
@@ -131,7 +131,7 @@ export function Hero() {
             <div
               key={item}
               className="flex items-center gap-2 text-sm"
-              style={{ color: "rgba(255,255,255,0.45)" }}
+              style={{ color: "rgba(255,255,255,0.7)" }}
             >
               <span
                 style={{

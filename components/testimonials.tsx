@@ -78,7 +78,7 @@ export function Testimonials() {
                 <p className="font-semibold" style={{ color: "#1a1a2e" }}>
                   {testimonial.name}
                 </p>
-                <p className="text-sm mt-0.5" style={{ color: "#8a8aaa" }}>
+                <p className="text-sm mt-0.5" style={{ color: "#6a6a8a" }}>
                   {testimonial.businessType}
                 </p>
               </div>

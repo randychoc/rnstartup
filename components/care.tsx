@@ -107,7 +107,7 @@ export function Care() {
                 <h4 style={{ color: "#FFFFFF", fontSize: "1rem", fontWeight: 700 }}>
                   {plan.name}
                 </h4>
-                <p className="text-xs mt-1" style={{ color: "rgba(255,255,255,0.45)" }}>
+                <p className="text-xs mt-1" style={{ color: "rgba(255,255,255,0.7)" }}>
                   {plan.target}
                 </p>
               </div>
@@ -116,7 +116,7 @@ export function Care() {
                 <span className="text-3xl font-extrabold" style={{ color: "#FFFFFF" }}>
                   {plan.price}
                 </span>
-                <span className="text-sm" style={{ color: "rgba(255,255,255,0.4)" }}>
+                <span className="text-sm" style={{ color: "rgba(255,255,255,0.7)" }}>
                   {plan.period}
                 </span>
               </div>
@@ -130,7 +130,7 @@ export function Care() {
                     >
                       +
                     </span>
-                    <span className="text-sm" style={{ color: "rgba(255,255,255,0.55)" }}>
+                    <span className="text-sm" style={{ color: "rgba(255,255,255,0.75)" }}>
                       {feat}
                     </span>
                   </li>

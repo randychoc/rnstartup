@@ -89,7 +89,7 @@ export function Portfolio() {
           </h2>
           <p
             className="mt-4 text-base max-w-xl mx-auto"
-            style={{ color: "rgba(255,255,255,0.5)" }}
+            style={{ color: "rgba(255,255,255,0.7)" }}
           >
             Negocios reales en Guatemala que confiaron en RENOA para dar el salto a internet.
           </p>
@@ -114,7 +114,11 @@ export function Portfolio() {
                   style={{ borderBottom: "1px solid rgba(112,48,239,0.15)" }}
                 >
                   <picture>
-                    <source srcSet={project.image.replace(".jpg", ".webp")} type="image/webp" />
+                    <source
+                      type="image/webp"
+                      srcSet={`${project.image.replace(".jpg", "-400w.webp")} 400w, ${project.image.replace(".jpg", "-800w.webp")} 800w, ${project.image.replace(".jpg", ".webp")} 1200w`}
+                      sizes="(max-width: 768px) 100vw, 550px"
+                    />
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={project.image}
@@ -140,7 +144,7 @@ export function Portfolio() {
                       </h4>
                       <p
                         className="text-xs mt-0.5"
-                        style={{ color: "rgba(255,255,255,0.4)" }}
+                        style={{ color: "rgba(255,255,255,0.7)" }}
                       >
                         {project.businessType}
                       </p>
