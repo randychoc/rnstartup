@@ -114,7 +114,6 @@ export function Portfolio() {
                   style={{ borderBottom: "1px solid rgba(112,48,239,0.15)" }}
                 >
                   <picture>
-                    <source srcSet={project.image.replace(".jpg", ".avif")} type="image/avif" />
                     <source srcSet={project.image.replace(".jpg", ".webp")} type="image/webp" />
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
