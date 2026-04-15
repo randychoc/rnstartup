@@ -1,9 +1,4 @@
-import Image from "next/image"
 import { TrendingUp } from "lucide-react"
-import imgVegasPizzaLasOriginales from "../app/ClientesRenoa/vegaspizzalasoriginales.png"
-import imgPizzeriaLasVegas from "../app/ClientesRenoa/pizzerialasvegas.png"
-import imgAsis247 from "../app/ClientesRenoa/asis247gt.png"
-import imgTallerRPM from "../app/ClientesRenoa/tallerrpmgt.png"
 
 type Plan = "START" | "GROW" | "PRO"
 
@@ -30,35 +25,40 @@ const projects: {
   businessType: string
   result: string
   plan: Plan
-  image: typeof imgVegasPizzaLasOriginales
+  image: string
+  alt: string
 }[] = [
   {
     client: "ASIS 247 GT",
     businessType: "Servicios de asistencia",
     result: "Clientes encuentran sus servicios en Google las 24 horas",
     plan: "START",
-    image: imgAsis247,
+    image: "/portfolio/asis247gt.jpg",
+    alt: "Sitio web ASIS 247 GT — servicios de asistencia en Guatemala",
   },
   {
     client: "Pizzería Las Vegas",
     businessType: "Restaurante / Pizzería",
     result: "Presencia digital lista para recibir pedidos",
     plan: "START",
-    image: imgPizzeriaLasVegas,
+    image: "/portfolio/pizzerialasvegas.jpg",
+    alt: "Sitio web Pizzería Las Vegas — restaurante en Guatemala",
   },
   {
     client: "Vegas Pizza Las Originales",
     businessType: "Restaurante / Pizzería",
     result: "Ahora sus clientes encuentran el menú completo en Google",
     plan: "START",
-    image: imgVegasPizzaLasOriginales,
+    image: "/portfolio/vegaspizzalasoriginales.jpg",
+    alt: "Sitio web Vegas Pizza Las Originales — pizzería en Guatemala",
   },
   {
     client: "Taller RPM GT",
     businessType: "Taller mecánico",
     result: "Genera consultas de nuevos clientes sin pagar publicidad",
     plan: "START",
-    image: imgTallerRPM,
+    image: "/portfolio/tallerrpmgt.jpg",
+    alt: "Sitio web Taller RPM GT — taller mecánico en Guatemala",
   },
 ]
 
@@ -110,18 +110,18 @@ export function Portfolio() {
               >
                 {/* Project image */}
                 <div
-                  className="w-full relative"
-                  style={{
-                    aspectRatio: "16 / 9",
-                    borderBottom: "1px solid rgba(112,48,239,0.15)",
-                  }}
+                  className="w-full aspect-video overflow-hidden"
+                  style={{ borderBottom: "1px solid rgba(112,48,239,0.15)" }}
                 >
-                  <Image
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
                     src={project.image}
-                    alt={project.client}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 50vw"
+                    alt={project.alt}
+                    width={1200}
+                    height={675}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover"
                   />
                 </div>
 
