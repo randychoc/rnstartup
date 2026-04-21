@@ -3,10 +3,6 @@ import { MessageCircle } from "lucide-react"
 const RENOA_PHONE_CLEAN = "50242945544"
 const WHATSAPP_DEFAULT_MESSAGE = "Hola, me interesa el diagnóstico gratuito de RENOA. Quiero saber cómo aparece mi negocio en Google."
 
-// Actualizar manualmente cada mes (mismos valores que en hero.tsx)
-const CURRENT_MONTH = "abril"
-const AVAILABLE_SLOTS: number = 2
-
 const getWhatsAppUrl = () =>
   `https://wa.me/${RENOA_PHONE_CLEAN}?text=${encodeURIComponent(WHATSAPP_DEFAULT_MESSAGE)}`
 
@@ -86,18 +82,6 @@ export function CTA() {
           Sin costo · Sin compromiso · 15 minutos
         </p>
 
-        {/* Availability indicator */}
-        <div className="flex flex-col items-center gap-1">
-          <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse flex-shrink-0" />
-            <p className="text-sm font-medium" style={{ color: "rgba(255,255,255,0.85)" }}>
-              Disponibilidad en {CURRENT_MONTH}: {AVAILABLE_SLOTS} proyecto{AVAILABLE_SLOTS !== 1 ? "s" : ""}
-            </p>
-          </div>
-          <p className="text-xs" style={{ color: "rgba(255,255,255,0.7)" }}>
-            Trabajamos máximo 4 proyectos al mes para garantizar calidad
-          </p>
-        </div>
 
       </div>
     </section>
