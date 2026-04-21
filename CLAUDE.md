@@ -39,22 +39,33 @@ Each section is a named export in its own file under `components/`. There are no
 
 ## Image optimization
 
-Portfolio images follow a three-format strategy for maximum browser coverage:
+Portfolio images follow a two-format strategy (JPEG fallback + WebP in multiple sizes):
 
-| Format | Tool | Quality | Typical size |
+| Format | Tool | Quality | Sizes |
 |---|---|---|---|
-| JPEG | `sips` | 80 | 332–428 KB |
-| WebP | `cwebp -q 80` | 80 | 152–212 KB |
-| AVIF | `sips -s format avif -s formatOptions 70` | 70 | 176–236 KB |
+| JPEG | `sips` | 80 | full size (332–428 KB) — fallback only |
+| WebP 400w | `cwebp -q 80 -resize 400 0` | 80 | 18–28 KB — mobile |
+| WebP 800w | `cwebp -q 80 -resize 800 0` | 80 | 65–96 KB — tablet |
+| WebP full | `cwebp -q 80` | 80 | 152–212 KB — desktop |
 
-`portfolio.tsx` uses `<picture>` tags — browsers pick the first format they support:
+> AVIF sources were removed from `<picture>` tags because Firefox desktop had rendering issues with them.
+
+`portfolio.tsx` uses `<picture>` tags with `srcset` + `sizes` for responsive loading:
 ```html
-<source srcSet="...avif" type="image/avif" />
-<source srcSet="...webp" type="image/webp" />
+<source
+  type="image/webp"
+  srcSet="...-400w.webp 400w, ...-800w.webp 800w, ....webp 1200w"
+  sizes="(max-width: 768px) 100vw, 550px"
+/>
 <img src="...jpg" loading="lazy" decoding="async" />
 ```
 
-To add a new portfolio image: place the PNG source in `app/ClientesRenoa/`, then run `bash scripts/optimize-images.sh` (generates JPEG), then manually run `cwebp -q 80 <file>.jpg -o <file>.webp` and `sips -s format avif -s formatOptions 70 <file>.jpg --out <file>.avif` in `public/portfolio/`.
+To add a new portfolio image: place the PNG source in `app/ClientesRenoa/`, then run `bash scripts/optimize-images.sh` (generates JPEG), then manually generate the three WebP variants in `public/portfolio/`:
+```bash
+cwebp -q 80 <file>.jpg -o <file>.webp
+cwebp -q 80 -resize 800 0 <file>.jpg -o <file>-800w.webp
+cwebp -q 80 -resize 400 0 <file>.jpg -o <file>-400w.webp
+```
 
 ## Styling
 
@@ -67,6 +78,7 @@ To add a new portfolio image: place the PNG source in `app/ClientesRenoa/`, then
   - `--renoa-purple-dim: rgba(112, 48, 239, 0.15)` — subtle purple fill
   - `--renoa-purple-border: rgba(112, 48, 239, 0.2)` — purple border
 - Utility classes `.section-dark`, `.section-dark-card`, `.shadow-card`, `.shadow-card-hover`, `.shadow-modal`, `.shadow-overlay` are defined in `globals.css`.
+- **Accessibility (WCAG AA):** On dark backgrounds (`#090820`), `rgba(255,255,255,...)` text must be ≥ 0.7 opacity for body text and ≥ 0.6 for secondary/muted text. Never go below 0.6 on dark backgrounds.
 - shadcn/ui components (`components/ui/`) use the `radix-nova` style with `lucide-react` icons.
 - Dark mode is supported via `next-themes` (`components/theme-provider.tsx`). Press `d` to toggle.
 
@@ -76,6 +88,7 @@ To add a new portfolio image: place the PNG source in `app/ClientesRenoa/`, then
 - `compiler.removeConsole` strips `console.log/warn` in production builds.
 - Inter font uses `display: 'swap'` to prevent invisible text during font load.
 - `app/layout.tsx` includes `preconnect` and `dns-prefetch` for Google Analytics domains.
+- `GoogleAnalytics.tsx` uses `strategy="lazyOnload"` (defers GA scripts until after page load) to reduce Total Blocking Time.
 - `public/.nojekyll` disables Jekyll processing on GitHub Pages.
 
 ## Section visual rhythm
