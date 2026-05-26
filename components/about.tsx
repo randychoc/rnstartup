@@ -97,7 +97,7 @@ export function About() {
             className="inline-flex items-center gap-2 text-sm font-semibold hover:opacity-75 transition-opacity"
             style={{ color: "#9B6BF5" }}
           >
-            ¿Querés conocer más sobre cómo trabajamos?
+            ¿Quieres conocer más sobre cómo trabajamos?
             <ArrowRight className="w-4 h-4" />
           </a>
         </div>

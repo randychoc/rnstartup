@@ -127,7 +127,7 @@ export function UseCases() {
             className="hover:opacity-75 transition-opacity"
             style={{ color: "#9B6BF5" }}
           >
-            Consultá tu caso →
+            Consulta tu caso →
           </a>
         </p>
 
