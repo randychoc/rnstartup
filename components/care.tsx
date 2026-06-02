@@ -18,7 +18,7 @@ const carePlans = [
     features: [
       "Tu sitio y dominio .com activos todo el año — RENOA gestiona todo",
       "Renovación de dominio incluida — tu dirección en internet no vence",
-      "Hasta 2 actualizaciones de contenido al mes",
+      "Hasta 3 actualizaciones de contenido al mes",
       "Reporte mensual de visitas: cuántas personas vieron tu sitio",
       "Respuesta a solicitudes en 48 horas hábiles",
     ],
@@ -32,7 +32,7 @@ const carePlans = [
     highlighted: true,
     features: [
       "Todo lo de CARE Básico, más:",
-      "Hasta 5 actualizaciones al mes — fotos, precios, promociones, lo que necesites",
+      "Hasta 6 actualizaciones al mes — fotos, precios, promociones, lo que necesites",
       "Tu galería siempre fresca con las fotos más recientes de tu negocio",
       "Revisión de SEO cada 3 meses: nos aseguramos de que Google siga encontrándote",
       "Respuesta a solicitudes en 24 horas hábiles",
