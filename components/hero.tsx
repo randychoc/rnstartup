@@ -2,6 +2,7 @@
 
 import { ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import WhatsAppLink from "@/components/WhatsAppLink"
 
 const WhatsAppIcon = ({ className }: { className?: string }) => (
   <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
@@ -90,10 +91,10 @@ export function Hero() {
             className="w-full sm:w-auto h-12 px-8 rounded-xl font-semibold text-base transition-all"
             style={{ background: "#7030EF", color: "#fff", border: "none" }}
           >
-            <a href={getWhatsAppUrl()} target="_blank" rel="noopener noreferrer">
+            <WhatsAppLink href={getWhatsAppUrl()} section="hero">
               <WhatsAppIcon className="w-5 h-5 mr-2" />
               Diagnóstico gratis
-            </a>
+            </WhatsAppLink>
           </Button>
           <Button
             asChild

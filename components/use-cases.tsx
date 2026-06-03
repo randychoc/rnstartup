@@ -1,4 +1,7 @@
+"use client"
+
 import { Utensils, Stethoscope, ShoppingBag, Briefcase } from "lucide-react"
+import WhatsAppLink from "@/components/WhatsAppLink"
 
 const RENOA_PHONE_CLEAN = "50242945544"
 const WHATSAPP_MESSAGE = "Hola, me interesa conocer más sobre los servicios de RENOA para mi negocio."
@@ -120,15 +123,14 @@ export function UseCases() {
         {/* Bottom note */}
         <p className="text-center mt-10 text-sm" style={{ color: "rgba(255,255,255,0.7)" }}>
           ¿No ves tu tipo de negocio? Todos los negocios locales pueden beneficiarse de un sitio web profesional.{" "}
-          <a
+          <WhatsAppLink
             href={getWhatsAppUrl()}
-            target="_blank"
-            rel="noopener noreferrer"
+            section="use_cases"
             className="hover:opacity-75 transition-opacity"
             style={{ color: "#9B6BF5" }}
           >
             Consulta tu caso →
-          </a>
+          </WhatsAppLink>
         </p>
 
       </div>

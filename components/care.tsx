@@ -1,5 +1,8 @@
+"use client"
+
 import { MessageCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import WhatsAppLink from "@/components/WhatsAppLink"
 
 const RENOA_PHONE_CLEAN = "50242945544"
 
@@ -159,10 +162,10 @@ export function Care() {
                     : { background: "rgba(112,48,239,0.18)", color: "#9B6BF5", border: "1px solid rgba(112,48,239,0.3)" }
                 }
               >
-                <a href={getWhatsAppUrl(plan.name)} target="_blank" rel="noopener noreferrer">
+                <WhatsAppLink href={getWhatsAppUrl(plan.name)} section="care" planName={plan.name}>
                   <MessageCircle className="w-4 h-4 mr-2" />
                   Solicitar {plan.name}
-                </a>
+                </WhatsAppLink>
               </Button>
             </div>
           ))}

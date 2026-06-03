@@ -1,4 +1,7 @@
+"use client"
+
 import { Mail, Phone } from "lucide-react"
+import WhatsAppLink from "@/components/WhatsAppLink"
 
 const SOCIAL_LINKS = [
   {
@@ -119,14 +122,13 @@ export function Footer() {
                 </li>
               ))}
               <li>
-                <a
+                <WhatsAppLink
                   href={getWhatsAppUrl()}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  section="footer"
                   style={linkStyle}
                 >
                   WhatsApp
-                </a>
+                </WhatsAppLink>
               </li>
             </ul>
           </div>

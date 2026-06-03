@@ -1,5 +1,8 @@
+"use client"
+
 import { Check, MessageCircle, Users, TrendingDown, Calculator } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import WhatsAppLink from "@/components/WhatsAppLink"
 
 const RENOA_PHONE_CLEAN = "50242945544"
 
@@ -254,10 +257,10 @@ export function Plans() {
                     : { background: "#F4F2FF", color: "#7030EF", border: "none" }
                 }
               >
-                <a href={getWhatsAppUrl(plan.name)} target="_blank" rel="noopener noreferrer">
+                <WhatsAppLink href={getWhatsAppUrl(plan.name)} section="plans" planName={plan.name}>
                   <MessageCircle className="w-4 h-4 mr-2" />
                   Solicitar {plan.name}
-                </a>
+                </WhatsAppLink>
               </Button>
             </div>
           ))}

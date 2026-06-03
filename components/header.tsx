@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import WhatsAppLink from "@/components/WhatsAppLink"
 
 const WhatsAppIcon = ({ className }: { className?: string }) => (
   <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
@@ -91,11 +92,11 @@ export function Header() {
               style={{ background: "#7030EF", color: "#fff", border: "none" }}
               onMouseEnter={() => setCtaPulse(false)}
             >
-              <a href={getWhatsAppUrl()} target="_blank" rel="noopener noreferrer">
+              <WhatsAppLink href={getWhatsAppUrl()} section="header">
                 <WhatsAppIcon className="w-4 h-4 mr-2" />
                 <span className="hidden lg:inline">Diagnóstico gratis</span>
                 <span className="lg:hidden">WhatsApp</span>
-              </a>
+              </WhatsAppLink>
             </Button>
           </div>
 
@@ -134,10 +135,10 @@ export function Header() {
                 className="h-11 w-full rounded-lg font-semibold mt-2"
                 style={{ background: "#7030EF", color: "#fff", border: "none" }}
               >
-                <a href={getWhatsAppUrl()} target="_blank" rel="noopener noreferrer">
+                <WhatsAppLink href={getWhatsAppUrl()} section="header">
                   <WhatsAppIcon className="w-4 h-4 mr-2" />
                   Diagnóstico gratis
-                </a>
+                </WhatsAppLink>
               </Button>
             </nav>
           </div>
